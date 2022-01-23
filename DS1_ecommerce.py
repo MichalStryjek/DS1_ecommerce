@@ -529,7 +529,7 @@ def test_function():
     Products["pineapple"] = int(pineapple)
     Products["pineapple pen"] = int(pineapple_pen)
     Products["pen pineapple apple pen"] = int(ppap)
-    print(Products['pen'])
+    print(Products['apple'])
     return Products
 
 
