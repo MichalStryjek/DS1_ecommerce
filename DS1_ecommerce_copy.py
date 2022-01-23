@@ -13,7 +13,7 @@ import logging.handlers
 
 print(sqlite3.sqlite_version_info)
 
-
+print("nothing")
 #0.0.2 setup session management using bottle-session
 
 app = bottle.app()

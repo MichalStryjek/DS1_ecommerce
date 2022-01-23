@@ -447,12 +447,12 @@ def loginf(loginName, password, randStr, login_status):
 #Basket
 
 Products: dict[str, int] = {
-    'Pen': 0,
-    'Apple': 0,
-    'Apple pen': 0,
-    'Pineapple': 0,
-    'Pineapple pen': 0,
-    'Pen Pineapple Apple Pen':0
+    'pen': 0,
+    'apple': 0,
+    'apple pen': 0,
+    'pineapple': 0,
+    'pineapple pen': 0,
+    'pen pineapple apple pen':0
 }
 
 # def update_product_qty(key):
@@ -529,7 +529,7 @@ def test_function():
     Products["pineapple"] = int(pineapple)
     Products["pineapple pen"] = int(pineapple_pen)
     Products["pen pineapple apple pen"] = int(ppap)
-    print(Products['apple'])
+    print(Products['pineapple'])
     return Products
 
 
