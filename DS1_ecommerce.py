@@ -275,6 +275,19 @@ def add_user(userpack, addresspack, clientpack):
     insert_into_db('client_data', clientpack, 0)
     con.commit()
 
+Products: dict[str, int] = {
+    'pen': 0,
+    'apple': 0,
+    'apple pen': 0,
+    'pineapple': 0,
+    'pineapple pen': 0,
+    'pen pineapple apple pen':0
+}
+
+
+
+
+
 
 # HERE PAGE SETUP STARTS
 
@@ -446,29 +459,12 @@ def loginf(loginName, password, randStr, login_status):
 
 #Basket
 
-Products: dict[str, int] = {
-    'pen': 0,
-    'apple': 0,
-    'apple pen': 0,
-    'pineapple': 0,
-    'pineapple pen': 0,
-    'pen pineapple apple pen':0
-}
+
 
 # def update_product_qty(key):
 #     if key in Products.keys():
 #         Products[key] =
 
-def add_item(key):
-    if key in Products.keys():
-        Products[key] = Products[key] + 1
-
-def rev_item(key):
-    if key in Products.keys():
-        if Products[key] == 0:
-            print(Products[key])
-        else:
-            Products[key] = Products[key] - 1
 
 
 
@@ -517,26 +513,36 @@ def products():
 # The below function takes quantity of products when user goes to the checkout site:
 @app.route('/products', method=['POST'])
 def test_function():
+    login_status = checkAuth()
     pen = request.forms.get("pen")
     apple = request.forms.get("apple")
     apple_pen = request.forms.get("apple_pen")
     pineapple = request.forms.get("pineapple")
     pineapple_pen = request.forms.get("pineapple_pen")
     ppap = request.forms.get("ppap")
+    #change dictionary value
     Products["pen"] = int(pen)
     Products["apple"] = int(apple)
     Products["apple pen"] = int(apple_pen)
     Products["pineapple"] = int(pineapple)
     Products["pineapple pen"] = int(pineapple_pen)
     Products["pen pineapple apple pen"] = int(ppap)
-    print(Products['pineapple'])
-    return Products
+    print(Products)
+    return template('checkout', loginINFO=login_status)
+
+
+@app.route('/checkout')
+def checkout_site():
+    login_status = checkAuth()
+    return template('checkout', loginINFO=login_status)
 
 
 
 
-from typing import Dict
-
-
+#
+# @app.route('/example')
+# def example_site():
+#     login_status = checkAuth()
+#     return template('example_page', loginINFO=login_status)
 
 app.run(host='localhost', port=2137, reloader=False, debug=False)
