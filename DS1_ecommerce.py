@@ -517,48 +517,23 @@ def products():
 # The below function takes quantity of products when user goes to the checkout site:
 @app.route('/products', method=['POST'])
 def test_function():
-    val_sth = request.forms.get("ppap")
-    print(val_sth)
-    Products["Pen Pineapple Apple Pen"]=val_sth
-    return Products["Pen Pineapple Apple Pen"]
+    pen = request.forms.get("pen")
+    apple = request.forms.get("apple")
+    apple_pen = request.forms.get("apple_pen")
+    pineapple = request.forms.get("pineapple")
+    pineapple_pen = request.forms.get("pineapple_pen")
+    ppap = request.forms.get("ppap")
+    Products["pen"] = int(pen)
+    Products["apple"] = int(apple)
+    Products["apple pen"] = int(apple_pen)
+    Products["pineapple"] = int(pineapple)
+    Products["pineapple pen"] = int(pineapple_pen)
+    Products["pen pineapple apple pen"] = int(ppap)
+    print(Products)
+    return Products
 
 
 
-
-
-@app.route('/example')
-def example_site():
-    login_status = checkAuth()
-    return template('example_page', loginINFO=login_status)
-
-
-# def display_msg
-# def minus():
-
-
-############### TEST
-
-
-
-# @app.route('/example', method=['GET'])
-# def index():
-#     login_status=checkAuth()
-#     return '''<form method="POST" action="/login">
-# <input name="number" type="number" />
-# <input type="submit" />
-# </form>'''
-#    #
-#    # data = {"to_display":"HI, how are you"}
-#    # return template("example_page", data)
-#
-#
-#
-# @app.route('/example', method=['POST'])
-# def example_submit():
-#     # login_status=checkAuth()
-#     # number = request.forms.get('number', type=int)
-#     # return str(number + number)
-#
 
 from typing import Dict
 

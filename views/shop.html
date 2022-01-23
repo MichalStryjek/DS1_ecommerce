@@ -36,6 +36,8 @@
 </head>
 
 <body>
+
+<form action="/products" method="POST">
     <!-- Start Main Top -->
     <div class="main-top">
         <div class="container-fluid">
@@ -91,7 +93,7 @@
                                     <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT30
                                 </li>
                                 <li>
-                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now 
+                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
                                 </li>
                             </ul>
                         </div>
@@ -254,12 +256,14 @@
                                                     <div class="type-lb">
                                                         <p class="sale">Sale</p>
                                                     </div>
+                                                    <div>
                                                     <img src="images/pen.jpg" class="img-fluid" alt="Image">
-                                                    <form action="/products" method="POST">
+
                                                             <a href="#" class="qty qty-minus ">-</a>
                                                             <input name="pen" type="numeric" value="1" />
                                                             <a href="#" class="qty qty-plus">+</a>
-                                                        </form>
+
+                                                    </div>
                                                         <ul>
                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
@@ -281,11 +285,11 @@
                                                         <p class="new">New</p>
                                                     </div>
                                                     <img src="images/apple.jpg" class="img-fluid" alt="Image">
-                                                    <form action="/products" method="POST">
+
                                                             <a href="#"   class="qty qty-minus ">-</a>
                                                             <input name="apple" type="numeric" value="1" />
                                                             <a href="#" class="qty qty-plus">+</a>
-                                                        </form>
+
 
                                                         <ul>
                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -308,11 +312,11 @@
                                                         <p class="sale">Sale</p>
                                                     </div>
                                                     <img src="images/apple_pen.jpg" class="img-fluid" alt="Image">
-                                                    <form action="/products" method="POST">
+
                                                             <a href="#"   class="qty qty-minus ">-</a>
                                                             <input name="apple_pen" type="numeric" value="1" />
                                                             <a href="#" class="qty qty-plus">+</a>
-                                                        </form>
+
                                                         <ul>
                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
@@ -334,11 +338,11 @@
                                                         <p class="new">New</p>
                                                     </div>
                                                     <img src="images/pineapple.jpg" class="img-fluid" alt="Image">
-                                                    <form action="/products" method="POST">
+
                                                             <a href="#"   class="qty qty-minus ">-</a>
                                                             <input name="pineapple" type="numeric" value="1" />
                                                             <a href="#" class="qty qty-plus">+</a>
-                                                        </form>
+
                                                         <ul>
                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
@@ -362,11 +366,12 @@
                                                     <img src="images/pineapple_pen.jpg" class="img-fluid" alt="Image">
 
                                                     <div class="col col-qty  layout-inline">
-                                                        <form action="/products" method="POST">
+
                                                             <a href="#"   class="qty qty-minus ">-</a>
                                                             <input name="pineapple_pen" type="numeric" value="1" />
                                                             <a href="#" class="qty qty-plus">+</a>
-                                                        </form>
+                                                            <button href="test_function()" ">Send</button>
+
 
                                                         <ul>
                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -397,14 +402,14 @@
                                                         </ul>
 
                                                                 <div class="col col-qty layout-inline">
-                                                                     <form action="/products" method="POST">
+
         <div class="col col-qty  layout-inline">
           <a href="#"   class="qty qty-minus ">-</a>
             <input name="ppap" type="numeric" value="1" />
           <a href="#" class="qty qty-plus">+</a>
         </div>
         <button href="test_function()" ">Send</button>
-</form>
+
                                                     </div>
 
                                                 <div class="why-text">
@@ -544,7 +549,7 @@
                                     </div>
                                 </div>
                                 <div class="list-group-collapse sub-men">
-                                    <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Vegetables 
+                                    <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Vegetables
 								<small class="text-muted">(50)</small>
 								</a>
                                     <div class="collapse" id="sub-men2" data-parent="#list-group-men">
@@ -713,8 +718,8 @@
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-widget">
                             <h4>About Freshshop</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 							
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
@@ -781,5 +786,5 @@
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
 </body>
-
+</form>
 </html>
