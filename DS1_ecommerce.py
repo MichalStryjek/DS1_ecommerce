@@ -557,8 +557,9 @@ def test_site():
     command = 'Select * FROM products'
     c.execute(command)
     downloaded_products = c.fetchall()
-    print(downloaded_products[0][1])
-    printAll((downloaded_products[0]))
+    print(downloaded_products)
+    a=downloaded_products
+    print(a[0][3])
 
     return template('test_product', loginINFO=login_status, prod_down=downloaded_products)
 
