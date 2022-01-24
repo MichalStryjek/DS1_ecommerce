@@ -549,15 +549,56 @@ def test_function():
 @app.route('/checkout', method=['POST'])
 def checkout_site():
     login_status = checkAuth()
-    apple = request.forms.get("Apple")
-    apple_pen = request.forms.get("Apple pen")
-    pineapple = request.forms.get("Pineapple")
-    pineapple_pen = request.forms.get("Pineapple pen")
-    ppap = request.forms.get("Pen Pineapple Apple Pen")
-    print(apple,apple_pen,pineapple,pineapple_pen,ppap)
-    sth = request.forms
-    for item in sth:
-        print(sth.get(item))
+
+    my_dict = {}
+
+    prod_collection = form_to_dict(request.forms)
+    print(prod_collection)
+
+    product_id_list = prod_collection.keys()
+    print(product_id_list)
+
+    for k in product_id_list:
+        prod_name = getFromDB("products", "product_name", "product_id", k)
+        my_dict[prod_name + "_name"] = getFromDB("products", "product_name", "product_id", k)
+        my_dict[prod_name + "_price"] = getFromDB("products", "price", "product_id", k)
+        my_dict[prod_name + "_qty"] = prod_collection[k]
+
+    print(my_dict)
+
+    # getFromDB(table_var, column_var, id_var, checked_userID)
+
+
+
+    #
+    # prod_collectionrequest.forms
+    # for x in prod_collection:
+    #     my_dict =
+    # pen = request.forms.get("1")
+    # print(pen)
+    #
+    #
+    # command = 'Select * FROM products'
+    # c.execute(command)
+    # downloaded_products = c.fetchall()
+    # print(downloaded_products)
+    # a=downloaded_products
+    # print(a[0][1])
+    # b= list(downloaded_products)
+    # print(b)
+    #
+    #
+    #
+    # apple = request.forms.get(product)
+    # apple_pen = request.forms.get("Apple pen")
+    # pineapple = request.forms.get("Pineapple")
+    # pineapple_pen = request.forms.get("Pineapple pen")
+    # ppap = request.forms.get("Pen Pineapple Apple Pen")
+    # print(apple,apple_pen,pineapple,pineapple_pen,ppap)
+    # sth = request.forms
+    # for item in sth:
+    #     print(sth.get(item))
+    # printAll(apple)
     return template('checkout', loginINFO=login_status)
 
 @app.route('/test')
