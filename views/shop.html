@@ -37,7 +37,7 @@
 
 <body>
 
-<form action="/products" method="POST">
+<form action="/checkout" method="POST">
 <body>
 <!-- HERE MENU STARTS COPY FROM HERE TO OTHER HTML -->
     <!-- Start Main Top -->
@@ -146,7 +146,7 @@
         <div class="container">
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="app-control" placeholder="Search">
                 <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
             </div>
         </div>
@@ -205,177 +205,27 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Sale</p>
-                                                    </div>
-                                                    <div>
-                                                    <img src="images/pen.jpg" class="img-fluid" alt="Image">
-
-                                                            <a href="#" class="qty qty-minus ">-</a>
-                                                            <input name="pen" type="numeric" value="1" />
-                                                            <a href="#" class="qty qty-plus">+</a>
-
-                                                    </div>
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                        </ul>
 
 
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Pen</h4>
-                                                    <h5> 10 PLN</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="new">New</p>
-                                                    </div>
-                                                    <img src="images/apple.jpg" class="img-fluid" alt="Image">
-                                                            <a href="#"   class="qty qty-minus ">-</a>
-                                                            <input name="apple" type="numeric" value="1" />
-                                                            <a href="#" class="qty qty-plus">+</a>
-
-
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                        </ul>
-
-
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Apple</h4>
-                                                    <h5>10 PLN</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Sale</p>
-                                                    </div>
-                                                    <img src="images/apple_pen.jpg" class="img-fluid" alt="Image">
-
-                                                            <a href="#"   class="qty qty-minus ">-</a>
-                                                            <input name="apple_pen" type="numeric" value="1" />
-                                                            <a href="#" class="qty qty-plus">+</a>
-
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                        </ul>
-
-
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Apple Pen</h4>
-                                                    <h5> 10 PLN </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="new">New</p>
-                                                    </div>
-                                                    <img src="images/pineapple.jpg" class="img-fluid" alt="Image">
-
-                                                            <a href="#"   class="qty qty-minus ">-</a>
-                                                            <input name="pineapple" type="numeric" value="1" />
-                                                            <a href="#" class="qty qty-plus">+</a>
-
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                        </ul>
-
-
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Pineapple</h4>
-                                                    <h5> 10 PLN</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Sale</p>
-                                                    </div>
-                                                    <img src="images/pineapple_pen.jpg" class="img-fluid" alt="Image">
-
-                                                    <div class="col col-qty  layout-inline">
-
-                                                            <a href="#"   class="qty qty-minus ">-</a>
-                                                            <input name="pineapple_pen" type="numeric" value="1" />
-                                                            <a href="#" class="qty qty-plus">+</a>
-
-
-
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                        </ul>
-
-                                                    </div>
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Pineapple Pen</h4>
-                                                    <h5> 10 PLN</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Sale</p>
-                                                    </div>
-                                                    <img src="images/pen_pineapple_apple_pen.jpg" class="img-fluid" alt="Image">
-
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                        </ul>
-
-                                                                <div class="col col-qty layout-inline">
-
-        <div class="col col-qty  layout-inline">
-          <a href="#"   class="qty qty-minus ">-</a>
-            <input name="ppap" type="numeric" value="1" />
-          <a href="#" class="qty qty-plus">+</a>
-        </div>
-
-
-                                                    </div>
-
-                                                <div class="why-text">
-                                                    <h4>Pen Pineapple Apple Pen</h4>
-                                                    <h5> 50 PLN </h5>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                            <button href="test_function()" ">Send</button>
-                                    </div>
+        %for product in prod_down:
+            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+            <div class="products-single fix">
+            <div class="box-img-hover">
+            <div>
+            <img src={{!product[0]}}  class="img-fluid" alt="Image">
+            <a href="#" class="qty qty-minus ">-</a>
+            <input name={{!product[1]}} type="numeric" value="1" />
+            <a href="#" class="qty qty-plus">+</a>
+            </div>
+            </div>
+            <div class="why-text">
+            <h4>{{!product[1]}}</h4>
+            <h5> {{!product[2]}}</h5>
+            </div>
+            </div>
+            </div>
+        %end
+                                        <button href="test_function()" ">Send</button>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="list-view">
                                     <div class="list-view-box">
