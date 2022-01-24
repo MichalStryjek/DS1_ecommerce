@@ -524,7 +524,7 @@ def products():
 def test_function():
     login_status = checkAuth()
 
-    pen = request.forms.get(product[1])
+    #pen = request.forms.get(product[1])
     # apple = request.forms.get("apple")
     # apple_pen = request.forms.get("apple_pen")
     # pineapple = request.forms.get("pineapple")
@@ -549,7 +549,15 @@ def test_function():
 @app.route('/checkout', method=['POST'])
 def checkout_site():
     login_status = checkAuth()
-
+    apple = request.forms.get("Apple")
+    apple_pen = request.forms.get("Apple pen")
+    pineapple = request.forms.get("Pineapple")
+    pineapple_pen = request.forms.get("Pineapple pen")
+    ppap = request.forms.get("Pen Pineapple Apple Pen")
+    print(apple,apple_pen,pineapple,pineapple_pen,ppap)
+    sth = request.forms
+    for item in sth:
+        print(sth.get(item))
     return template('checkout', loginINFO=login_status)
 
 @app.route('/test')
