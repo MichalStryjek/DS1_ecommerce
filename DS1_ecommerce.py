@@ -549,15 +549,31 @@ def test_function():
 @app.route('/checkout', method=['POST'])
 def checkout_site():
     login_status = checkAuth()
-    apple = request.forms.get("Apple")
-    apple_pen = request.forms.get("Apple pen")
-    pineapple = request.forms.get("Pineapple")
-    pineapple_pen = request.forms.get("Pineapple pen")
-    ppap = request.forms.get("Pen Pineapple Apple Pen")
-    print(apple,apple_pen,pineapple,pineapple_pen,ppap)
-    sth = request.forms
-    for item in sth:
-        print(sth.get(item))
+    pen = request.forms.get("1")
+    print(pen)
+    #
+    #
+    # command = 'Select * FROM products'
+    # c.execute(command)
+    # downloaded_products = c.fetchall()
+    # print(downloaded_products)
+    # a=downloaded_products
+    # print(a[0][1])
+    # b= list(downloaded_products)
+    # print(b)
+    #
+    #
+    #
+    # apple = request.forms.get(product)
+    # apple_pen = request.forms.get("Apple pen")
+    # pineapple = request.forms.get("Pineapple")
+    # pineapple_pen = request.forms.get("Pineapple pen")
+    # ppap = request.forms.get("Pen Pineapple Apple Pen")
+    # print(apple,apple_pen,pineapple,pineapple_pen,ppap)
+    # sth = request.forms
+    # for item in sth:
+    #     print(sth.get(item))
+    # printAll(apple)
     return template('checkout', loginINFO=login_status)
 
 @app.route('/test')
