@@ -205,23 +205,26 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div>
-                                                        <img src="images/pen.jpg" class="img-fluid" alt="Image">
-                                                        <a href="#" class="qty qty-minus ">-</a>
-                                                        <input name="pen" type="numeric" value="1" />
-                                                        <a href="#" class="qty qty-plus">+</a>
-                                                    </div>
-                                                </div>
-                                                <div class="why-text">
-                                                    <h4>Pen</h4>
-                                                    <h5> 10 PLN</h5>
-                                                </div>
-                                            </div>
-
-                                    </div>
+<!--                                        %print(prod_down)-->
+<!--                                    %end-->
+%for product in prod_down:
+    '<div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+    <div class="products-single fix">
+    <div class="box-img-hover">
+    <div>
+    <img src={{product[1]}} class="img-fluid" alt="Image">
+    <a href="#" class="qty qty-minus ">-</a>
+    <input name={1} type="numeric" value="1" />
+    <a href="#" class="qty qty-plus">+</a>
+    </div>
+    </div>
+    <div class="why-text">
+    <h4>{1}</h4>
+    <h5> {2} + "PLN"</h5>
+    </div>
+    </div>
+    </div>'.format(product[3],product[1],product[2])
+    %end
                                         <button href="test_function()" ">Send</button>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="list-view">
