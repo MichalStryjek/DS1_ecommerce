@@ -507,28 +507,42 @@ def cart():
 @app.route('/products')
 def products():
     login_status = checkAuth()
-    return template('shop', loginINFO=login_status)
+    command = 'Select * FROM products'
+    c.execute(command)
+    downloaded_products = c.fetchall()
+    print(downloaded_products)
+    printAll((downloaded_products[0]))
+
+# def split():
+#     for each x in downloaded_products
+
+    return template('shop', loginINFO=login_status, prod_down=downloaded_products)
 
 
 # The below function takes quantity of products when user goes to the checkout site:
 @app.route('/products', method=['POST'])
 def test_function():
     login_status = checkAuth()
-    pen = request.forms.get("pen")
-    apple = request.forms.get("apple")
-    apple_pen = request.forms.get("apple_pen")
-    pineapple = request.forms.get("pineapple")
-    pineapple_pen = request.forms.get("pineapple_pen")
-    ppap = request.forms.get("ppap")
-    #change dictionary value
-    Products["pen"] = int(pen)
-    Products["apple"] = int(apple)
-    Products["apple pen"] = int(apple_pen)
-    Products["pineapple"] = int(pineapple)
-    Products["pineapple pen"] = int(pineapple_pen)
-    Products["pen pineapple apple pen"] = int(ppap)
-    print(Products)
+    # pen = request.forms.get("pen")
+    # apple = request.forms.get("apple")
+    # apple_pen = request.forms.get("apple_pen")
+    # pineapple = request.forms.get("pineapple")
+    # pineapple_pen = request.forms.get("pineapple_pen")
+    # ppap = request.forms.get("ppap")
+    # #change dictionary value
+    # Products["pen"] = int(pen)
+    # Products["apple"] = int(apple)
+    # Products["apple pen"] = int(apple_pen)
+    # Products["pineapple"] = int(pineapple)
+    # Products["pineapple pen"] = int(pineapple_pen)
+    # Products["pen pineapple apple pen"] = int(ppap)
+    # print(Products)
+
+
+
     return template('checkout', loginINFO=login_status)
+
+
 
 
 @app.route('/checkout')
@@ -536,7 +550,17 @@ def checkout_site():
     login_status = checkAuth()
     return template('checkout', loginINFO=login_status)
 
+@app.route('/test')
+def test_site():
+    login_status = checkAuth()
+    login_status = checkAuth()
+    command = 'Select * FROM products'
+    c.execute(command)
+    downloaded_products = c.fetchall()
+    print(downloaded_products)
+    printAll((downloaded_products[0]))
 
+    return template('test_product', loginINFO=login_status, prod_down=downloaded_products)
 
 
 #
