@@ -523,7 +523,8 @@ def products():
 @app.route('/products', method=['POST'])
 def test_function():
     login_status = checkAuth()
-    # pen = request.forms.get("pen")
+
+    pen = request.forms.get(product[1])
     # apple = request.forms.get("apple")
     # apple_pen = request.forms.get("apple_pen")
     # pineapple = request.forms.get("pineapple")
@@ -545,14 +546,14 @@ def test_function():
 
 
 
-@app.route('/checkout')
+@app.route('/checkout', method=['POST'])
 def checkout_site():
     login_status = checkAuth()
+
     return template('checkout', loginINFO=login_status)
 
 @app.route('/test')
 def test_site():
-    login_status = checkAuth()
     login_status = checkAuth()
     command = 'Select * FROM products'
     c.execute(command)

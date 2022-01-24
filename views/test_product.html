@@ -205,14 +205,18 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
-
+                                    %for product in prod_down:
+                                    <div class="media mb-2 border-bottom">
+                                        <div class="media-body">{{!product[1]}}</a>
+                                            <div class="small text-muted">Price: {{!product[2]}} <span class="mx-2">|</span> Qty: {{!product[1]}} <span class="mx-2">|</span> Subtotal: {{!product[1]}}  {{!product[2]}} </div>
+                                        </div>
 
         %for product in prod_down:
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
             <div class="products-single fix">
             <div class="box-img-hover">
             <div>
-            <img src={{!product[0]}}  class="img-fluid" alt="Image">
+            <img src={{!product[3]}}  class="img-fluid" alt="Image">
             <a href="#" class="qty qty-minus ">-</a>
             <input name={{!product[1]}} type="numeric" value="1" />
             <a href="#" class="qty qty-plus">+</a>
