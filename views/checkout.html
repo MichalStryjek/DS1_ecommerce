@@ -316,23 +316,13 @@
                                     <h3>Shopping cart</h3>
                                 </div>
                                 <div class="rounded p-2 bg-light">
-                                    %for s_item, q_item,p in zip(basket_names_attr,basket_qty_attr,p_sum):
+                                    %for item in cart:
                                     <div class="media mb-2 border-bottom">
-                                    <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                    <div class="small text-muted">{{!basket_names_attr[s_item]}}<span class="mx-2">|</span>{{!basket_qty[q_item]}}<span class="mx-2">p_sum[p]</span></div>
+                                    <div class="media-body"> <a href="detail.html"> {{!item}}</a>
+                                    <div class="small text-muted"><span class="mx-2">Price: {{!cart[item][str(item)+"_price"]}}</span><span class="mx-2">Quantity: {{!int(cart[item][str(item)+"_qty"])}}</span> Subtotal:{{!cart[item][str(item)+"_price"] * int(cart[item][str(item)+"_qty"])}} </div>
                                     </div>
                                     </div>
                                     %end
-                                    <div class="media mb-2 border-bottom">
-                                        <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                            <div class="small text-muted">Price: $60.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $60.00</div>
-                                        </div>
-                                    </div>
-                                    <div class="media mb-2">
-                                        <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                            <div class="small text-muted">Price: $40.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $40.00</div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -370,9 +360,7 @@
                                 <hr>
                                 <div class="d-flex gr-total">
                                     <h5>Grand Total</h5>
-                                    %
-                                    <div class="ml-auto h5">{{!checkout_sum}}</div>
-                                    %end
+                                    <div class="ml-auto h5"> $ 388 </div>
                                 </div>
                                 <hr> </div>
                         </div>
