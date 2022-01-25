@@ -668,6 +668,11 @@ def test_site():
     return template('test_product', loginINFO=login_status, prod_down=downloaded_products)
 
 
+@app.route("/thankyou",  method=['POST','GET'])
+def thanks():
+    login_status = checkAuth()
+    return template('thankyou', loginINFO=login_status)
+
 #
 # @app.route('/example')
 # def example_site():
