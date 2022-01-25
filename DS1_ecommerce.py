@@ -628,14 +628,9 @@ def checkout_site():
     print(quantity)
 
     # # we want to obtain iterated price of products
-    products_sum =[]
 
-    for x, y in zip(price_values,quantity):
-        products_sum.append(x * y)
-        print(products_sum)
-
-
-
+    products_sum = [x * y for x, y in zip(price_values, quantity)]
+    print(products_sum)
 
     response.set_cookie("cart", my_dict, secret=secretKey)
 
