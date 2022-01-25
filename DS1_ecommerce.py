@@ -257,11 +257,13 @@ def create_address_package(formdata, userID):
 def insert_into_db(table, dictionary, commit):
     keylist = list(dictionary.keys())
     vallist = list()
+    print(keylist)
     for i in dictionary.keys():
         vallist.append(dictionary.get(i))
     # python returns list in square brackets and SQL doesn't like that
     keylist_round = str(", ".join(keylist))
     vallist_round = str(", ".join(repr(v) for v in vallist))
+    print(vallist)
     command = 'INSERT INTO {table} ({keylist}) VALUES ({vallist})'.format(table=table, vallist=vallist_round,
                                                                           keylist=keylist_round)
     c.execute(command)
@@ -328,7 +330,7 @@ def newcustomer():
 
     fromdone = request.query.done  # value taken from page URL, !! it is stored as text !!
     from_page = request.query.fromproceed
-
+    ord = request.query.order
     # if entered from register or order detail page
     if from_page == "1":
         # save form data from previous page
@@ -344,6 +346,11 @@ def newcustomer():
         address_package = create_address_package(register_formdata, client_package['userID'])
         print(address_package)
         response.set_cookie("address_pack", address_package, secret=secretKey)
+
+
+        print("HERE IS ORD 1: " +ord)
+        if ord=="1":
+            response.set_cookie("iscart", "TRU", secret=secretKey)
 
         # 4.1.2.4 Display newcustomer template
 
@@ -385,6 +392,26 @@ def newcustomer():
 
                 user_package = create_users_package(newcustomer_form)
                 add_user(user_package, address_package, client_package)
+
+                ord=request.get_cookie("iscart",secret=secretKey)
+                print(ord)
+                if ord=="TRU":
+
+                    ID = getMaxID("orders", "orderID") + 1
+
+                    user = request.get_cookie("user", secret=secretKey)
+                    userID = getUserID(user)
+                    if userID == None:
+                        userID = "NULL"
+                    print(userID)
+
+                    cart2 = request.get_cookie("cart", secret=secretKey)
+                    strCart = str(cart2)
+                    address_package = request.get_cookie("address_pack", secret=secretKey)
+                    order_diction = {"orderID": ID, "Cart": strCart, "userID": userID,
+                                     "addressID": address_package['addressID']}
+                    print(order_diction)
+                    insert_into_db("orders", order_diction, 1)
 
                 # login after account is created
                 loginName = user_package.get('username')
@@ -671,6 +698,25 @@ def test_site():
 @app.route("/thankyou",  method=['POST','GET'])
 def thanks():
     login_status = checkAuth()
+
+    ID=getMaxID("orders", "orderID")+1
+
+    user=request.get_cookie("user", secret=secretKey)
+    userID=getUserID(user)
+    if userID==None:
+        userID="NULL"
+    print(userID)
+
+
+    cart2=request.get_cookie("cart",secret=secretKey)
+    strCart=str(cart2)
+    address_package = request.get_cookie("address_pack", secret=secretKey)
+    order_diction={"orderID":ID, "Cart":strCart, "userID":userID, "addressID": address_package['addressID']}
+    print(order_diction)
+    insert_into_db("orders",order_diction,1)
+
+
+
     return template('thankyou', loginINFO=login_status)
 
 #
