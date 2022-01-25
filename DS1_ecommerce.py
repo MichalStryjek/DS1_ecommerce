@@ -564,21 +564,43 @@ def checkout_site():
     basket = my_dict
     print(my_dict)
     basket_list = list(my_dict.values())
+
     for b_item in basket_list:
         str(b_item)
+
     str_basket_list = str(basket_list)
     print(str_basket_list)
-    prices_dict = getFromDB("products", "price", "product_id", k)
-    print(prices_dict)
 
+    command = 'Select price FROM products'
+    c.execute(command)
+    summ_price = c.fetchall()
+    print(summ_price)
+    s_price_list = summ_price
+    # print(a[0][3])
+
+
+    summ_qty = basket_list[2::3]
+
+    print(type(summ_qty))
+    summ_qty_int = int(summ_qty)
+    print(type(summ_qty_int))
+
+    # summ_price = (basket_list[1::3])
+    #
+    #
+    # int_summ_price = int(summ_price)
+    # print(int_summ_price)
+
+
+
+    # summ_price = prices_dict[1::3]
+    # print(summ_price)
 
     # print(basket_list()
     # summ_basket = basket_list[::3]
     # print(summ_basket)
-    # summ_qty = basket_list[2::3]
-    # print(summ_qty)
-    # # summ_price = str(basket_list[1::3])
-    # # print(summ_price)
+
+
     # for x in my_dict:
     #     # print(my_dict[x].values())
     # print(basket_list[1])
