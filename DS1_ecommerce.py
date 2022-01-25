@@ -652,7 +652,7 @@ def test_site():
     a=downloaded_products
     print(a[0][3])
 
-    return template('test_product', loginINFO=login_status, prod_down=downloaded_products, products_sum_checkout=products_sum)
+    return template('test_product', loginINFO=login_status, prod_down=downloaded_products)
 
 
 #
