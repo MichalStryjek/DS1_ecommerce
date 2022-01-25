@@ -604,39 +604,6 @@ def checkout_site():
     print(int(cart["Pen"]["Pen_qty"])*2)
     response.set_cookie("cart", my_dict, secret=secretKey)
 
-    # getFromDB(table_var, column_var, id_var, checked_userID)
-
-
-
-    #
-    # prod_collectionrequest.forms
-    # for x in prod_collection:
-    #     my_dict =
-    # pen = request.forms.get("1")
-    # print(pen)
-    #
-    #
-    # command = 'Select * FROM products'
-    # c.execute(command)
-    # downloaded_products = c.fetchall()
-    # print(downloaded_products)
-    # a=downloaded_products
-    # print(a[0][1])
-    # b= list(downloaded_products)
-    # print(b)
-    #
-    #
-    #
-    # apple = request.forms.get(product)
-    # apple_pen = request.forms.get("Apple pen")
-    # pineapple = request.forms.get("Pineapple")
-    # pineapple_pen = request.forms.get("Pineapple pen")
-    # ppap = request.forms.get("Pen Pineapple Apple Pen")
-    # print(apple,apple_pen,pineapple,pineapple_pen,ppap)
-    # sth = request.forms
-    # for item in sth:
-    #     print(sth.get(item))
-    # printAll(apple)
     return template('checkout', loginINFO=login_status, basket_attr=basket_list, cart=cart)
 
 @app.route('/test')
