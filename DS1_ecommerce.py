@@ -632,10 +632,13 @@ def checkout_site():
     products_sum = [x * y for x, y in zip(price_values, quantity)]
     print(products_sum)
 
+    total_sum = sum(products_sum)
+    # products_sum_str = str(products_sum)
+
     response.set_cookie("cart", my_dict, secret=secretKey)
 
 
-    return template('checkout', loginINFO=login_status, basket_attr=basket_list)
+    return template('checkout', loginINFO=login_status, basket_attr=basket_list,checkout_sum=total_sum)
 
 @app.route('/test')
 def test_site():

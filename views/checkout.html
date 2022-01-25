@@ -319,7 +319,7 @@
                                     %for s_item, q_item in zip(basket_attr[::3],basket_attr[2::3]):
                                     <div class="media mb-2 border-bottom">
                                     <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                    <div class="small text-muted">{{!s_item}}<span class="mx-2">|</span>{{!q_item}}<span class="mx-2">|</span> Subtotal: $80.00</div>
+                                    <div class="small text-muted">{{!s_item}}<span class="mx-2">|</span>{{!q_item}}<span class="mx-2">|</span></div>
                                     </div>
                                     </div>
                                     %end
@@ -370,7 +370,9 @@
                                 <hr>
                                 <div class="d-flex gr-total">
                                     <h5>Grand Total</h5>
-                                    <div class="ml-auto h5"> $ 388 </div>
+                                    %
+                                    <div class="ml-auto h5">{{!checkout_sum}}</div>
+                                    %end
                                 </div>
                                 <hr> </div>
                         </div>
