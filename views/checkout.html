@@ -368,13 +368,10 @@
                                     <h3>Shopping cart</h3>
                                 </div>
                                 <div class="rounded p-2 bg-light">
-                                    %for s_item in basket_attr[::3]:
+                                    %for s_item, q_item in zip(basket_attr[::3],basket_attr[2::3]):
                                     <div class="media mb-2 border-bottom">
                                     <div class="media-body"> <a href="detail.html"> Lorem ipsum dolor sit amet</a>
-                                    <div class="small text-muted">{{!s_item}}<span class="mx-2">|</span>
-                                    %end
-                                    %for q_item in basket_attr[2::3]:
-                                    {{!q_item}}<span class="mx-2">|</span> Subtotal: $80.00</div>
+                                    <div class="small text-muted">{{!s_item}}<span class="mx-2">|</span>{{!q_item}}<span class="mx-2">|</span> Subtotal: $80.00</div>
                                     </div>
                                     </div>
                                     %end
