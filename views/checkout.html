@@ -176,7 +176,7 @@
                         <div class="title-left">
                             <h3>Billing address</h3>
                         </div>
-                        <form class="needs-validation" novalidate>
+                        <form class="needs-validation" id="userdata">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="firstName">First name *</label>
@@ -379,8 +379,9 @@
                                 </div>
                                 <hr> </div>
                         </div>
-                        <div class="col-12 d-flex shopping-box"> <a href="checkout.html" class="ml-auto btn hvr-hover">Place Order without registration</a> </div>
-                        <div class="col-12 d-flex shopping-box"> <a href="checkout.html" class="ml-auto btn hvr-hover">Place Order and create an account</a> </div>
+                        <div class="col-12 d-flex shopping-box"> <div><br><button form="userdata" href="/newcustomer?frompage=1&order=1" class="ml-auto btn hvr-hover">Place Order and create an account</button> </div></div>
+                        <div class="col-12 d-flex shopping-box"> <div><br><button  form="userdata"   href="/summary?noauth=1" class="ml-auto btn hvr-hover">Place Order without registration</button> </div></div>
+
                     </div>
                 </div>
             </div>

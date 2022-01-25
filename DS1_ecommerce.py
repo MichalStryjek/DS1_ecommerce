@@ -565,7 +565,7 @@ def checkout_site():
         my_dict[prod_name + "_qty"] = prod_collection[k]
 
     print(my_dict)
-
+    response.set_cookie("cart", my_dict, secret=secretKey)
     # getFromDB(table_var, column_var, id_var, checked_userID)
 
 
