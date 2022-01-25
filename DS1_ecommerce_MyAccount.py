@@ -269,10 +269,15 @@ def insert_into_db(table, dictionary, commit):
         con.commit()
 
 
-def add_user(userpack, addresspack, clientpack):
+def add_user(userpack, addresspack, clientpack, order=0, cart=None):
     insert_into_db('users', userpack, 0)
     insert_into_db('address', addresspack, 0)
     insert_into_db('client_data', clientpack, 0)
+
+    if order==1:
+        ID=getMaxID("orders","orderID")
+        insert_into_db("orders",{"orderID":ID, "Cart":cart, "userID":addresspack["userID"],"addressID":addresspack["addressID"]})
+
     con.commit()
 
 Products: dict[str, int] = {
@@ -315,9 +320,8 @@ def register():
 @app.route('/newcustomer', method=['POST', 'GET'])
 def newcustomer():
     login_status = checkAuth()
-
     # Database packages
-
+    login_and_order=0
     user_package = {}
     client_package = {}
     address_package = {}
@@ -328,7 +332,9 @@ def newcustomer():
 
     fromdone = request.query.done  # value taken from page URL, !! it is stored as text !!
     from_page = request.query.fromproceed
-
+    order_pending = request.query.doorder
+    print(from_page)
+    print(order_pending)
     # if entered from register or order detail page
     if from_page == "1":
         # save form data from previous page
@@ -344,8 +350,12 @@ def newcustomer():
         address_package = create_address_package(register_formdata, client_package['userID'])
         print(address_package)
         response.set_cookie("address_pack", address_package, secret=secretKey)
+        if address_package["userID"]!=client_package['userID']:
+            return ("DATABASE INCONSISTENT, CHECK USER ID VALUES")
+
 
         # 4.1.2.4 Display newcustomer template
+
 
         return template('newcustomer', duplicate_password_flag_HTML=False, password_dont_match_HTML=False,
                         duplicate_account_flag_HTML=False, loginINFO=login_status)
@@ -384,7 +394,14 @@ def newcustomer():
                 # prepare all data packets necessary for user creation and use them in add user function
 
                 user_package = create_users_package(newcustomer_form)
-                add_user(user_package, address_package, client_package)
+                print("HELLOOO")
+                print(order_pending+"Dupaa")
+                if order_pending == "1":
+                    cart = request.get_cookie("cart")
+                    login_and_order = 1
+                    add_user(user_package, address_package, client_package, login_and_order, cart)
+                else:
+                    add_user(user_package, address_package, client_package)
 
                 # login after account is created
                 loginName = user_package.get('username')
@@ -395,10 +412,16 @@ def newcustomer():
                 # request to database won't work unless randStr is put into quotes
                 randStr = "'" + randStr + "'"
 
+
+
                 return loginf(loginName, password, randStr, "NO")
                 # redirect
 
+
         # 4.1.1.4 Redirect to index page
+        if login_and_order==1:
+            redirect("/thankyou")
+
         redirect('/index')
 
 
@@ -438,10 +461,7 @@ def login():
 
 
 def loginf(loginName, password, randStr, login_status):
-    print(loginName)
-    print(password)
-    print(checkinDB(loginName, "users", "username"))
-    print(checkinDB(password, "users", "password"))
+
     if checkinDB(loginName, "users", "username") == "MATCH" and checkinDB(password, "users", "password") == "MATCH":
         uID = getUserID(loginName)
         response.set_cookie("user", loginName, secret=secretKey)
@@ -540,29 +560,6 @@ def products():
 
 
 # The below function takes quantity of products when user goes to the checkout site:
-@app.route('/products', method=['POST'])
-def test_function():
-    login_status = checkAuth()
-
-    #pen = request.forms.get(product[1])
-    # apple = request.forms.get("apple")
-    # apple_pen = request.forms.get("apple_pen")
-    # pineapple = request.forms.get("pineapple")
-    # pineapple_pen = request.forms.get("pineapple_pen")
-    # ppap = request.forms.get("ppap")
-    # #change dictionary value
-    # Products["pen"] = int(pen)
-    # Products["apple"] = int(apple)
-    # Products["apple pen"] = int(apple_pen)
-    # Products["pineapple"] = int(pineapple)
-    # Products["pineapple pen"] = int(pineapple_pen)
-    # Products["pen pineapple apple pen"] = int(ppap)
-    # print(Products)
-
-
-
-    return template('checkout', loginINFO=login_status)
-
 
 
 
@@ -576,68 +573,21 @@ def checkout_site():
     #print(prod_collection)
 
     product_id_list = prod_collection.keys()
-    #print(product_id_list)
+    #rint(product_id_list)
 
     for k in product_id_list:
         prod_name = getFromDB("products", "product_name", "product_id", k)
         my_dict[prod_name + "_name"] = getFromDB("products", "product_name", "product_id", k)
         my_dict[prod_name + "_price"] = getFromDB("products", "price", "product_id", k)
         my_dict[prod_name + "_qty"] = prod_collection[k]
-    c.execute('SELECT product_name  FROM products')
-    products=c.fetchall()
+
     #print(my_dict)
-    basket_list = list(my_dict.values())
-    cart={}
-    print(my_dict)
-    for prod in products:
-        print(prod)
-        add = {}
-        for item in my_dict:
-
-            if item==prod[0]+"_price":
-                add[item]=my_dict[item]
-
-            elif item==prod[0]+"_qty":
-                add[item] = my_dict[item]
-        cart[prod[0]]=add
-    print(cart)
-    print(int(cart["Pen"]["Pen_qty"])*2)
     response.set_cookie("cart", my_dict, secret=secretKey)
 
     # getFromDB(table_var, column_var, id_var, checked_userID)
 
 
-
-    #
-    # prod_collectionrequest.forms
-    # for x in prod_collection:
-    #     my_dict =
-    # pen = request.forms.get("1")
-    # print(pen)
-    #
-    #
-    # command = 'Select * FROM products'
-    # c.execute(command)
-    # downloaded_products = c.fetchall()
-    # print(downloaded_products)
-    # a=downloaded_products
-    # print(a[0][1])
-    # b= list(downloaded_products)
-    # print(b)
-    #
-    #
-    #
-    # apple = request.forms.get(product)
-    # apple_pen = request.forms.get("Apple pen")
-    # pineapple = request.forms.get("Pineapple")
-    # pineapple_pen = request.forms.get("Pineapple pen")
-    # ppap = request.forms.get("Pen Pineapple Apple Pen")
-    # print(apple,apple_pen,pineapple,pineapple_pen,ppap)
-    # sth = request.forms
-    # for item in sth:
-    #     print(sth.get(item))
-    # printAll(apple)
-    return template('checkout', loginINFO=login_status, basket_attr=basket_list, cart=cart)
+    return template('checkout', loginINFO=login_status)
 
 @app.route('/test')
 def test_site():
