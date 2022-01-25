@@ -587,6 +587,9 @@ def checkout_site():
     print(my_dict)
     basket_list = list(my_dict.values())
 
+    basket_names = basket_list[::3]
+    basket_qty = basket_list[2::3]
+
 
     for k in product_id_list:
         prod_name = getFromDB("products", "product_name", "product_id", k)
@@ -638,7 +641,7 @@ def checkout_site():
     response.set_cookie("cart", my_dict, secret=secretKey)
 
 
-    return template('checkout', loginINFO=login_status, basket_attr=basket_list,checkout_sum=total_sum)
+    return template('checkout', loginINFO=login_status, basket_names_attr=basket_names, basket_qty_attr=basket_qty, checkout_sum=total_sum,p_sum = products_sum)
 
 @app.route('/test')
 def test_site():
