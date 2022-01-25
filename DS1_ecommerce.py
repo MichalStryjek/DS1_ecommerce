@@ -568,6 +568,9 @@ def checkout_site():
         str(b_item)
     str_basket_list = str(basket_list)
     print(str_basket_list)
+    prices_dict = getFromDB("products", "price", "product_id", k)
+    print(prices_dict)
+
 
     # print(basket_list()
     # summ_basket = basket_list[::3]
