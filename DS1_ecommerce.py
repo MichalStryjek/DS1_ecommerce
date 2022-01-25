@@ -513,8 +513,6 @@ def products():
     print(downloaded_products)
     printAll((downloaded_products[0]))
 
-# def split():
-#     for each x in downloaded_products
 
     return template('shop', loginINFO=login_status, prod_down=downloaded_products)
 
@@ -563,9 +561,26 @@ def checkout_site():
         my_dict[prod_name + "_name"] = getFromDB("products", "product_name", "product_id", k)
         my_dict[prod_name + "_price"] = getFromDB("products", "price", "product_id", k)
         my_dict[prod_name + "_qty"] = prod_collection[k]
-
+    basket = my_dict
     print(my_dict)
+    basket_list = list(my_dict.values())
+    for b_item in basket_list:
+        str(b_item)
+    str_basket_list = str(basket_list)
+    print(str_basket_list)
 
+    # print(basket_list()
+    # summ_basket = basket_list[::3]
+    # print(summ_basket)
+    # summ_qty = basket_list[2::3]
+    # print(summ_qty)
+    # # summ_price = str(basket_list[1::3])
+    # # print(summ_price)
+    # for x in my_dict:
+    #     # print(my_dict[x].values())
+    # print(basket_list[1])
+    # print(basket_list)
+    # print(basket_list[1])
     # getFromDB(table_var, column_var, id_var, checked_userID)
 
 
@@ -599,7 +614,7 @@ def checkout_site():
     # for item in sth:
     #     print(sth.get(item))
     # printAll(apple)
-    return template('checkout', loginINFO=login_status)
+    return template('checkout', loginINFO=login_status, basket_attr=basket_list)
 
 @app.route('/test')
 def test_site():
@@ -610,6 +625,8 @@ def test_site():
     print(downloaded_products)
     a=downloaded_products
     print(a[0][3])
+
+
 
     return template('test_product', loginINFO=login_status, prod_down=downloaded_products)
 
