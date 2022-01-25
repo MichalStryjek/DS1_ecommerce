@@ -175,31 +175,6 @@
             <div class="row">
                 <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
                     <div class="right-product-box">
-                        <div class="product-item-filter row">
-                            <div class="col-12 col-sm-8 text-center text-sm-left">
-                                <div class="toolbar-sorter-right">
-                                    <span>Sort by </span>
-                                    <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-									<option data-display="Select">Nothing</option>
-									<option value="1">Popularity</option>
-									<option value="2">High Price → High Price</option>
-									<option value="3">Low Price → High Price</option>
-									<option value="4">Best Selling</option>
-								</select>
-                                </div>
-                                <p>Showing all 4 results</p>
-                            </div>
-                            <div class="col-12 col-sm-4 text-center text-sm-right">
-                                <ul class="nav nav-tabs ml-auto">
-                                    <li>
-                                        <a class="nav-link active" href="#grid-view" data-toggle="tab"> <i class="fa fa-th"></i> </a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link" href="#list-view" data-toggle="tab"> <i class="fa fa-list-ul"></i> </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
 
                         <div class="product-categorie-box">
                             <div class="tab-content">
@@ -220,14 +195,14 @@
             </div>
             <div class="why-text">
             <h4>{{!product[1]}}</h4>
-            <h5> {{!product[2]}}</h5>
+            <h5> {{!product[2]}} PLN</h5>
             </div>
             </div>
             </div>
-            response.set_cookie({{!product[1]}}, request.forms)
         %end
-                                        <button href="/checkout" ">Send</button>
+
                                 </div>
+                               <button class="btn hvr-hover" href="/checkout" ">Continue to checkout</button>
                                 <div role="tabpanel" class="tab-pane fade" id="list-view">
                                     <div class="list-view-box">
                                         <div class="row">
