@@ -559,7 +559,7 @@ def checkout_site():
     for k in product_id_list:
         prod_name = getFromDB("products", "product_name", "product_id", k)
         my_dict[prod_name + "_name"] = getFromDB("products", "product_name", "product_id", k)
-        my_dict[prod_name + "_price"] = getFromDB("products", "price", "product_id", k)
+        my_dict[prod_name + "_price"] = str(getFromDB("products", "price", "product_id", k))
         my_dict[prod_name + "_qty"] = prod_collection[k]
     basket = my_dict
     print(my_dict)
