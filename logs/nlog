@@ -357,3 +357,13 @@
 2022-01-25 22:23:49,237 INFO     None GET http://localhost:2137/ 127.0.0.1
 2022-01-25 22:23:51,581 INFO     None GET http://localhost:2137/products 127.0.0.1
 2022-01-25 22:23:52,654 INFO     None POST http://localhost:2137/checkout 127.0.0.1
+2022-01-25 22:26:05,345 INFO     None GET http://localhost:2137/ 127.0.0.1
+2022-01-25 22:26:07,764 INFO     None GET http://localhost:2137/products 127.0.0.1
+2022-01-25 22:26:08,878 INFO     None POST http://localhost:2137/checkout 127.0.0.1
+2022-01-25 22:26:45,538 INFO     None GET http://localhost:2137/ 127.0.0.1
+2022-01-25 22:26:46,789 INFO     None GET http://localhost:2137/products 127.0.0.1
+2022-01-25 22:26:47,949 INFO     None POST http://localhost:2137/checkout 127.0.0.1
+2022-01-25 22:27:05,166 INFO     None GET http://localhost:2137/ 127.0.0.1
+2022-01-25 22:27:06,238 INFO     None GET http://localhost:2137/products 127.0.0.1
+2022-01-25 22:27:07,991 INFO     None POST http://localhost:2137/checkout 127.0.0.1
+2022-01-25 22:27:33,098 INFO     None GET http://localhost:2137/index 127.0.0.1
