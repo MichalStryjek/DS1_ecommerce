@@ -133,3 +133,12 @@
 2022-01-25 16:09:00,991 INFO     Omlet55 GET http://localhost:2137/myorders 127.0.0.1
 2022-01-25 16:09:27,264 INFO     Omlet55 GET http://localhost:2137/myorders 127.0.0.1
 2022-01-25 16:10:56,299 INFO     Omlet55 GET http://localhost:2137/myorders 127.0.0.1
+2022-01-25 20:26:58,635 INFO     None GET http://localhost:2137/ 127.0.0.1
+2022-01-25 20:27:00,572 INFO     None GET http://localhost:2137/products 127.0.0.1
+2022-01-25 20:27:02,582 INFO     None POST http://localhost:2137/checkout 127.0.0.1
+2022-01-25 20:32:20,742 INFO     None GET http://localhost:2137/ 127.0.0.1
+2022-01-25 20:32:21,903 INFO     None GET http://localhost:2137/products 127.0.0.1
+2022-01-25 20:32:23,513 INFO     None POST http://localhost:2137/checkout 127.0.0.1
+2022-01-25 20:32:56,201 INFO     None GET http://localhost:2137/ 127.0.0.1
+2022-01-25 20:32:56,969 INFO     None GET http://localhost:2137/products 127.0.0.1
+2022-01-25 20:32:58,466 INFO     None POST http://localhost:2137/checkout 127.0.0.1

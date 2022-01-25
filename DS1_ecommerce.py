@@ -581,10 +581,12 @@ def checkout_site():
     for k in product_id_list:
         prod_name = getFromDB("products", "product_name", "product_id", k)
         my_dict[prod_name + "_name"] = getFromDB("products", "product_name", "product_id", k)
-        my_dict[prod_name + "_price"] = getFromDB("products", "price", "product_id", k)
+        my_dict[prod_name + "_price"] = str(getFromDB("products", "price", "product_id", k))
         my_dict[prod_name + "_qty"] = prod_collection[k]
 
     print(my_dict)
+    basket_list = list(my_dict.values())
+
     response.set_cookie("cart", my_dict, secret=secretKey)
 
     # getFromDB(table_var, column_var, id_var, checked_userID)
@@ -620,7 +622,7 @@ def checkout_site():
     # for item in sth:
     #     print(sth.get(item))
     # printAll(apple)
-    return template('checkout', loginINFO=login_status)
+    return template('checkout', loginINFO=login_status, basket_attr=basket_list)
 
 @app.route('/test')
 def test_site():
