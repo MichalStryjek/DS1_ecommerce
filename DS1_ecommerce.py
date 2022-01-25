@@ -571,7 +571,7 @@ def checkout_site():
     login_status = checkAuth()
 
     my_dict = {}
-
+    my_dict_2 = {}
     prod_collection = form_to_dict(request.forms)
     print(prod_collection)
 
@@ -587,41 +587,59 @@ def checkout_site():
     print(my_dict)
     basket_list = list(my_dict.values())
 
+
+    for k in product_id_list:
+        prod_name = getFromDB("products", "product_name", "product_id", k)
+        my_dict_2[prod_name + "_name"] = getFromDB("products", "product_name", "product_id", k)
+        my_dict_2[prod_name + "_price"] = getFromDB("products", "price", "product_id", k)
+        my_dict_2[prod_name + "_qty"] = prod_collection[k]
+
+    print(my_dict_2)
+    basket_2 = list(my_dict_2.values())
+    price_values = basket_2[1::3]
+    print(type(price_values))
+
+
+
+    # command = 'Select price FROM products'
+    # c.execute(command)
+    # summ_price = c.fetchall()
+    # print(summ_price)
+    # s_price_list = str(list(summ_price))
+    # print(s_price_list)
+    #
+    # strings = [str(integer) for integer in summ_qty]
+    # a_string = "".join(strings)
+    # an_integer = int(a_string)
+    # print(an_integer)
+
+
+    # summ_qty = list(basket_list[2::3])
+    summ_qty = basket_list[2::3]
+    print(type(summ_qty))
+
+    strings_qty = [str(integer) for integer in summ_qty]
+    a_string = "".join(strings_qty)
+    an_integer = int(a_string)
+    print(an_integer)
+
+    # we obtain iterated quantity of products
+    quantity = [int(a) for a in str(an_integer)]
+    print(quantity)
+
+    # # we want to obtain iterated price of products
+    products_sum =[]
+
+    for x, y in zip(price_values,quantity):
+        products_sum.append(x * y)
+        print(products_sum)
+
+
+
+
     response.set_cookie("cart", my_dict, secret=secretKey)
 
-    # getFromDB(table_var, column_var, id_var, checked_userID)
 
-
-
-    #
-    # prod_collectionrequest.forms
-    # for x in prod_collection:
-    #     my_dict =
-    # pen = request.forms.get("1")
-    # print(pen)
-    #
-    #
-    # command = 'Select * FROM products'
-    # c.execute(command)
-    # downloaded_products = c.fetchall()
-    # print(downloaded_products)
-    # a=downloaded_products
-    # print(a[0][1])
-    # b= list(downloaded_products)
-    # print(b)
-    #
-    #
-    #
-    # apple = request.forms.get(product)
-    # apple_pen = request.forms.get("Apple pen")
-    # pineapple = request.forms.get("Pineapple")
-    # pineapple_pen = request.forms.get("Pineapple pen")
-    # ppap = request.forms.get("Pen Pineapple Apple Pen")
-    # print(apple,apple_pen,pineapple,pineapple_pen,ppap)
-    # sth = request.forms
-    # for item in sth:
-    #     print(sth.get(item))
-    # printAll(apple)
     return template('checkout', loginINFO=login_status, basket_attr=basket_list)
 
 @app.route('/test')
@@ -634,7 +652,7 @@ def test_site():
     a=downloaded_products
     print(a[0][3])
 
-    return template('test_product', loginINFO=login_status, prod_down=downloaded_products)
+    return template('test_product', loginINFO=login_status, prod_down=downloaded_products, products_sum_checkout=products_sum)
 
 
 #
