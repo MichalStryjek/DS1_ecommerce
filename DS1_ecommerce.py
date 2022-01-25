@@ -496,6 +496,26 @@ def myaccount():
     return template('my-account', loginINFO=login_status)
 
 
+@app.route('/myorders')
+def myorders():
+    login_status = checkAuth()
+    if login_status=='Unauthenticated':
+        redirect('/login')
+    else:
+        uID=getUserID(request.get_cookie('user',secret=secretKey))
+        command='SELECT * FROM "orders" WHERE userID = {ID}'.format(ID=uID)
+        c.execute(command)
+        orders=c.fetchall()
+        print(uID)
+        print(orders)
+
+
+
+
+
+        return template('myorders', loginINFO=login_status)
+
+
 ##6 Basket Site:
 
 @app.route('/cart')
